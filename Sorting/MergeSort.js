@@ -1,4 +1,4 @@
-
+//Worst O(n log n)
 
 function MergeSort(array) {
   if (array.length == 1) {
@@ -16,8 +16,7 @@ function Merge(leftArray, rightArray) {
   let mergedArray = []
   let leftIndex = 0;
   let rightIndex = 0;
-
-
+  
   //Merge left array and right array until one of the array is complete
   while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
     if (leftArray[leftIndex] < rightArray[rightIndex]) {
