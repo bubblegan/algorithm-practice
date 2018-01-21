@@ -73,6 +73,7 @@ class BST{
     return null;
   }
 
+  //Remove will take the LEFTEST NODE of the RIGHT NODE. and remove the LEFTEST NODE
   remove(data) {
     const removeNode = function(node, data) {
       if (node == null) {
@@ -110,6 +111,107 @@ class BST{
     this.root = removeNode(this.root, data);
   }
 
+  isBalanced(){
+    return (this.findMinHeight() >= this.findMaxHeight() - 1);
+  }
+
+  findMinHeight(node = this.root){
+    if(node === null){
+      return -1;
+    }
+
+    let leftNodeCount = this.findMinHeight(node.left);
+    let rightNodeCount = this.findMinHeight(node.right);
+
+    if(leftNodeCount < rightNodeCount){
+      return leftNodeCount + 1;
+    } else {
+      return rightNodeCount + 1;
+    }
+  }
+
+  findMaxHeight(node = this.root){
+    if(node === null){
+      return -1;
+    }
+    let leftNodeCount = this.findMaxHeight(node.left);
+    let rightNodeCount = this.findMaxHeight(node.right);
+
+    if(leftNodeCount > rightNodeCount){
+      return leftNodeCount + 1;
+    } else {
+      return rightNodeCount + 1;
+    }
+  }
+
+  //DFS
+  inOrder(){
+    if(this.root === null){
+      return null;
+    } else {
+      let results = []
+      function tranverseInOrder(node){
+        node.left && tranverseInOrder(node.left);
+        results.push(node.data);
+        node.right && tranverseInOrder(node.right);
+      }
+      tranverseInOrder(this.root);
+      return results;
+    }
+  }
+
+  preOrder(){
+    if(this.root === null){
+      return null;
+    } else {
+      let results = []
+      function tranverseInOrder(node){
+        results.push(node.data);        
+        node.left && tranverseInOrder(node.left);
+        node.right && tranverseInOrder(node.right);
+      }
+      tranverseInOrder(this.root);
+      return results;
+    }
+  }
+
+  postOrder(){
+    if(this.root === null){
+      return null;
+    } else {
+      let results = []
+      function tranverseInOrder(node){
+        node.left && tranverseInOrder(node.left);
+        node.right && tranverseInOrder(node.right);
+        results.push(node.data);                
+      }
+      tranverseInOrder(this.root);
+      return results;
+    }
+  }
+
+  //BFS
+  levelOrder(){
+    let results = [];
+    let queue = [];
+    if(this.root != null){
+      queue.push(this.root);
+      while(queue.length > 0){
+        let node = queue.shift();
+        results.push(node.data);
+        if(node.left !== null){
+          queue.push(node.left);
+        }
+        if(node.right !== null){
+          queue.push(node.right);
+        }
+      }
+      return results;
+    } else {
+      return null;
+    }
+  }
+
 
 }
 
@@ -121,4 +223,9 @@ bstTest.add(4);
 bstTest.add(12);
 bstTest.add(8);
 console.log(bstTest.find(4));
+console.log('min height : ' + bstTest.findMinHeight());
+console.log('max height : ' + bstTest.findMaxHeight());
+console.log('DFS : ' + bstTest.inOrder());
+console.log('BFS : ' + bstTest.levelOrder());
+
 
