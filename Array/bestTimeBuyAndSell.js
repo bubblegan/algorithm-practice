@@ -12,7 +12,7 @@
 function bestTime(array) {
 
   let max = 0;
-  let min = array[i];
+  let min = array[0];
   
   if(array.length === 1)
     return max;
@@ -24,8 +24,9 @@ function bestTime(array) {
       min = array[i];
     }
   }
-
   return max;
 }
 
+let testArray = [7, 1, 5, 3, 6, 4];
+console.log(bestTime(testArray));
 
