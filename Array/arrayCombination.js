@@ -8,10 +8,8 @@ function allCombination(array) {
       return;
     }
     combination.push([...array]);
-
     recursion(array , index - 1);
     recursion([...array.slice(0, index - 1), ...array.slice(index + 1, array.length -1)], index - 1);
-    
   }
 
   recursion(array, array.length - 1)
