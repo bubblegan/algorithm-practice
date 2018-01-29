@@ -1,14 +1,17 @@
+
+let sequence = 5
+let memoizeTable = new Array(sequence);
+
 function fibonacci(sequenceNumber) {
 
-  if (sequenceNumber == 0) {
-    return 0;
-  }
 
-  if (sequenceNumber == 1) {
-    return 1;
+  if(memoizeTable[sequenceNumber] !== undefined){
+    return memoizeTable[sequenceNumber];
   }
-
-  return (fibonacci(sequenceNumber - 1) + fibonacci(sequenceNumber - 2));
+  memoizeTable[sequenceNumber] = fibonacci(sequenceNumber - 1) + fibonacci(sequenceNumber - 2);
+  return memoizeTable[sequenceNumber];
 }
 
-console.log(fibonacci(20));
+memoizeTable[0] = 0;
+memoizeTable[1] = 1;
+console.log(fibonacci(sequence));
