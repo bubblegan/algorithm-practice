@@ -77,35 +77,40 @@ let MinHeap = function (array) {
     return result;
   }
 
-  this.minHeapify = function(array){
-    let recurse = function(array, index, length) {
-      while (true) {
+  this.minHeapify = function(array, index , length){
+    let heapify = function(array, index, length) {
         let left = index * 2 + 1;
-        let rights = index * 2 + 2;
+        let right = index * 2 + 2;
         let parent = index;
-
         if (left < length && array[left] < array[parent]) {
           parent = left;
         }
-
         if (right < length && array[right] < array[parent]) {
           parent = right;
         }
 
-        if (parent == index) {
-          break;
+        if(parent !== index){
+          [array[parent], array[index]] = [array[index], array[parent]];
+          heapify(array, parent, length);
         }
-
-        [array[parent], array[index]] = [array[index], array[parent]];
-        index = parent;
-      }
+        return array;
     }
+    return heapify(array,index, length);
   }
 
+  this.buildMinHeap = function(array){
+    //We heapify everything execpt
+    for(let i = Math.floor(array.length/2) ; i >= 0 ;  i-- ){
+      array = this.minHeapify(array, i , array.length);      
+    }    
+    return array;
+  }
 }
 
-let testArray = [4, 2, 3, 9, 10];
+let testArray = [4, 2, 9, 10, 3 ,6 ,1];
 let heap = new MinHeap();
+console.log(heap.buildMinHeap(testArray));
+
 heap.insertArray(testArray);
 
 console.log(heap.sort());
