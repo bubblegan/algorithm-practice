@@ -1,7 +1,7 @@
 
 
 
-let rods = [1 , 2 , 5];
+let rods = [3 , 4, 4, 5, 8 , 10];
 
 function rodCutting(rodLength){
 
@@ -16,5 +16,4 @@ function rodCutting(rodLength){
   return maxValue;
 }
 
-let testRods = [1 , 2 , 5];
-console.log(rodCutting(3));
+console.log(rodCutting(6));
