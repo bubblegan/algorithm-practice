@@ -15,14 +15,16 @@
  * https://leetcode.com/problems/combination-sum/
  */
 
-
-
-
 function sumCombination(array, target) {
   
   let combinations = [];
 
-  function recurse(assigned = []) {
+  function recurse(assigned = [], index = 0) {
+    
+
+    if(index >= array.length){
+      return;
+    }
     if(assigned.reduce( (a,b) => a + b , 0) === target){
       combinations.push(assigned);
       return;
@@ -30,10 +32,10 @@ function sumCombination(array, target) {
     if(assigned.reduce( (a,b) => a + b, 0) > target){
       return;
     }
+   
         
-    for(let i = 0 ; i < array.length ; i ++){
-      recurse([...assigned,array[i]]); 
-    }
+    recurse([...assigned,array[index]], index); 
+    recurse([...assigned], index + 1); 
   }
 
   recurse();
