@@ -11,6 +11,10 @@ function longestPalindrome(str){
       return 0;
     }
     
+    if(rightIndex - leftIndex === 1){
+      return 0;
+    }
+
     let maxPalin = 0;
 
     if(str[leftIndex] == str[rightIndex]){
