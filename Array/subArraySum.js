@@ -18,12 +18,13 @@ function subArraySum(array, targetSum) {
       return;
     }
 
+    console.log(sumMap);
     sumMap[sumSoFar] = i;
   }
 
   console.log('dont have any');
 }
 
-let testArray = [9,2,-3,5,8]
-let targetSum = 10;
+let testArray = [3,9,2,4,-3,5,8]
+let targetSum = 6;
 subArraySum(testArray, targetSum);

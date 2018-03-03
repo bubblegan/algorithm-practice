@@ -26,5 +26,5 @@ function editDistance(strA, strB){
   return minEditDistance;
 }
 
-console.log(editDistance('saturday', 'sundayy'));
+console.log(editDistance('a', 'ba'));
 

@@ -6,6 +6,10 @@ let MinHeap = function (array) {
 
   let heap = [null];
 
+  this.size = function(){
+    return heap.length;
+  }
+
   this.insertArray = function (array) {
     for (let i = 0; i < array.length; i++) {
       this.insert(array[i]);
@@ -136,7 +140,7 @@ let MinHeap = function (array) {
     return array;
   }
 }
-
+/*
 let testArray = [4, 2, 9, 10, 3 ,6 ,1];
 let testArray2 = [4, 2, 9, 10, 3 ,6 ,1];
 
@@ -144,4 +148,6 @@ let heap = new MinHeap();
 console.log("Built max heap :" + heap.buildMinHeap(testArray));
 console.log("Buiit min heap :" + heap.buildMaxHeap(testArray2));
 heap.insertArray(testArray);
-console.log(heap.sort());
+console.log(heap.sort());*/
+
+module.exports = MinHeap ;
