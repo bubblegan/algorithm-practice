@@ -1,11 +1,13 @@
 
 
 
-let coins = [2, 3, 5, 6]
+let coins = [7, 3, 5, 6];
+let memoizeTable = {};
+let MAX_VALUE = 2147483640;
 let totalOutput = 0;
 
-
-function coinChanging(total, index) {
+// The Total ways
+function coinChangingTotalWay(total, index) {
 
   if(total === 0){
     return 1;
@@ -15,8 +17,41 @@ function coinChanging(total, index) {
     return 0;
   }
 
-  return coinChanging(total - coins[index], index ) +  coinChanging(total, index - 1);
+  return coinChangingTotalWay(total - coins[index], index ) +  coinChangingTotalWay(total, index - 1);
 }
 
+function coinChangingMinCoin(total)  {
+
+  //change finish
+  if(total === 0) {
+    return 0;
+  }
+
+  //overshot
+  if(total < 0){
+    return MAX_VALUE;
+  }
+
+  let minCoin = 1000000;
+
+  if(memoizeTable[total]){
+    return memoizeTable[total];
+  }
+
+  for(let i = 0; i < coins.length; i++){
+    minCoin = Math.min(minCoin , coinChangingMinCoin(total - coins[i]));
+  }
+
+  minCoin = minCoin + 1;
+
+  memoizeTable[total] = minCoin;
+
+  return minCoin;
+}
+
+
+
+
 let startingIndex = coins.length - 1;
-console.log(coinChanging(10, startingIndex));
+console.log(coinChangingTotalWay(10, startingIndex));
+console.log(coinChangingMinCoin(100));
