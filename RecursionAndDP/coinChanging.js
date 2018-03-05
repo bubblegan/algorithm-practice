@@ -49,9 +49,6 @@ function coinChangingMinCoin(total)  {
   return minCoin;
 }
 
-
-
-
 let startingIndex = coins.length - 1;
 console.log(coinChangingTotalWay(10, startingIndex));
 console.log(coinChangingMinCoin(100));
