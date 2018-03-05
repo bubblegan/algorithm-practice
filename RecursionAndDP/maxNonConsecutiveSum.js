@@ -14,5 +14,5 @@ function maxNonConsecutive(array){
   return recurse();
 }
 
-let testArray = [3,6,4];
+let testArray = [3,1,1,7,7,18];
 console.log(maxNonConsecutive(testArray));
