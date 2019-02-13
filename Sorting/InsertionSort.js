@@ -20,5 +20,5 @@ function InsertionSort(array){
   return array;
 } 
 
-let testArray = [3,4,1,2,7,5,12,9];
+let testArray = [3,4,1,2,7,5,12,9,10];
 console.log(InsertionSort(testArray));
